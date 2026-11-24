@@ -1,9 +1,14 @@
 services:
   backend:
     image: sheryihab/example-backend
+    environment:
+      - REDIS_HOST=redis
     ports: 
       - 8080:8080
+    restart: unless-stopped
   frontend:
     image: sheryihab/example-frontend
     ports:
       - 5001:5001
+  redis:
+    image: redis
